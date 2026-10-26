@@ -1,0 +1,117 @@
+{
+  "app": {
+    "subtitle": "Personal finance",
+    "theme": "Toggle theme",
+    "language": "Language",
+    "settings": "Open preferences",
+    "portuguese": "Portuguese (Brazil)",
+    "english": "English"
+  },
+  "actions": {
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back"
+  },
+  "deleteDialog": {
+    "title": "Delete record?",
+    "description": "This action cannot be undone. The event will remain in the audit history.",
+    "error": "Could not delete the record."
+  },
+  "errorDialog": { "title": "Could not complete the action", "retry": "Try again" },
+  "history": {
+    "title": "History",
+    "description": "Auditable trail of creations and deletions.",
+    "loading": "Loading history…",
+    "action": "Action",
+    "entity": "Type",
+    "record": "Record",
+    "date": "Date"
+  },
+  "audit": { "CREATED": "Created", "UPDATED": "Updated", "DELETED": "Deleted" },
+  "auditEntity": {
+    "ACCOUNT": "Account",
+    "CATEGORY": "Category",
+    "TRANSACTION": "Transaction",
+    "BUDGET": "Budget"
+  },
+  "navigation": {
+    "dashboard": "Overview",
+    "transactions": "Transactions",
+    "accounts": "Accounts",
+    "categories": "Categories",
+    "budgets": "Budgets",
+    "reports": "Reports",
+    "history": "History"
+  },
+  "navigationGroups": {
+    "overview": "Overview",
+    "finances": "Finances",
+    "catalog": "Catalog"
+  },
+  "dashboard": {
+    "intro": "Track your finances for the selected month.",
+    "month": "Month",
+    "loading": "Loading financial summary…",
+    "error": "Could not load the dashboard.",
+    "balance": "Available balance",
+    "income": "Income",
+    "expense": "Expenses",
+    "result": "Monthly result",
+    "versus": "Income versus expenses",
+    "categoryExpenses": "Expenses by category",
+    "noExpenses": "No expenses this month.",
+    "latest": "Latest transactions"
+  },
+  "transactions": {
+    "new": "New transaction",
+    "description": "Description",
+    "amount": "Amount (BRL)",
+    "expense": "Expense",
+    "income": "Income",
+    "account": "Account",
+    "category": "Category",
+    "installments": "Installments",
+    "recurring": "Repeat for months",
+    "fixedExpense": "This is a fixed expense",
+    "fixedDuration": "Fixed expense duration (months)",
+    "createCategory": "Create a new category",
+    "save": "Save transaction",
+    "month": "Filter month",
+    "records": "{{count}} records",
+    "step": "Step {{current}} of 2",
+    "empty": "No transactions found for this month.",
+    "delete": "Delete"
+  },
+  "catalog": {
+    "newAccount": "New account",
+    "newCategory": "New category",
+    "newAccountDescription": "Enter the details to track this account's balance.",
+    "newCategoryDescription": "Set how transactions in this category are organized.",
+    "name": "Name",
+    "initialBalance": "Starting balance (BRL)",
+    "type": "Type",
+    "color": "Color",
+    "add": "Add",
+    "adding": "Adding...",
+    "loading": "Loading...",
+    "emptyAccounts": "No accounts yet.",
+    "emptyCategories": "No categories yet."
+  },
+  "table": {
+    "description": "Description",
+    "category": "Category",
+    "date": "Date",
+    "value": "Amount"
+  },
+  "validation": {
+    "descriptionRequired": "Enter a description.",
+    "amountPositive": "Enter a positive amount.",
+    "dateRequired": "Enter the date.",
+    "accountRequired": "Select an account.",
+    "categoryRequired": "Select a category.",
+    "nameRequired": "Enter a name.",
+    "initialBalanceRequired": "Enter a valid starting balance."
+  }
+}

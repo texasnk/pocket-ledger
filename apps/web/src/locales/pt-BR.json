@@ -1,0 +1,117 @@
+{
+  "app": {
+    "subtitle": "Finanças pessoais",
+    "theme": "Alternar tema",
+    "language": "Idioma",
+    "settings": "Abrir preferências",
+    "portuguese": "Português (Brasil)",
+    "english": "Inglês"
+  },
+  "actions": {
+    "delete": "Excluir",
+    "deleting": "Excluindo...",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "back": "Voltar"
+  },
+  "deleteDialog": {
+    "title": "Excluir registro?",
+    "description": "Esta ação não pode ser desfeita. O evento permanecerá registrado no histórico.",
+    "error": "Não foi possível excluir o registro."
+  },
+  "errorDialog": { "title": "Não foi possível concluir", "retry": "Tentar novamente" },
+  "history": {
+    "title": "Histórico",
+    "description": "Trilha auditável de criações e exclusões.",
+    "loading": "Carregando histórico…",
+    "action": "Ação",
+    "entity": "Tipo",
+    "record": "Registro",
+    "date": "Data"
+  },
+  "audit": { "CREATED": "Criado", "UPDATED": "Atualizado", "DELETED": "Excluído" },
+  "auditEntity": {
+    "ACCOUNT": "Conta",
+    "CATEGORY": "Categoria",
+    "TRANSACTION": "Transação",
+    "BUDGET": "Orçamento"
+  },
+  "navigation": {
+    "dashboard": "Visão geral",
+    "transactions": "Transações",
+    "accounts": "Contas",
+    "categories": "Categorias",
+    "budgets": "Orçamentos",
+    "reports": "Relatórios",
+    "history": "Histórico"
+  },
+  "navigationGroups": {
+    "overview": "Visão geral",
+    "finances": "Finanças",
+    "catalog": "Cadastros"
+  },
+  "dashboard": {
+    "intro": "Acompanhe sua situação no mês selecionado.",
+    "month": "Mês",
+    "loading": "Carregando resumo financeiro…",
+    "error": "Não foi possível carregar o dashboard.",
+    "balance": "Saldo disponível",
+    "income": "Receitas",
+    "expense": "Despesas",
+    "result": "Resultado do mês",
+    "versus": "Receitas versus despesas",
+    "categoryExpenses": "Despesas por categoria",
+    "noExpenses": "Nenhuma despesa neste mês.",
+    "latest": "Últimas transações"
+  },
+  "transactions": {
+    "new": "Novo lançamento",
+    "description": "Descrição",
+    "amount": "Valor (R$)",
+    "expense": "Despesa",
+    "income": "Receita",
+    "account": "Conta",
+    "category": "Categoria",
+    "installments": "Parcelas",
+    "recurring": "Repetir por meses",
+    "fixedExpense": "Este é um gasto fixo",
+    "fixedDuration": "Duração do gasto fixo (meses)",
+    "createCategory": "Criar nova categoria",
+    "save": "Salvar lançamento",
+    "month": "Filtrar mês",
+    "records": "{{count}} registros",
+    "step": "Etapa {{current}} de 2",
+    "empty": "Nenhum lançamento encontrado neste mês.",
+    "delete": "Excluir"
+  },
+  "catalog": {
+    "newAccount": "Nova conta",
+    "newCategory": "Nova categoria",
+    "newAccountDescription": "Informe os dados para acompanhar o saldo desta conta.",
+    "newCategoryDescription": "Defina como os lançamentos desta categoria serão organizados.",
+    "name": "Nome",
+    "initialBalance": "Saldo inicial (R$)",
+    "type": "Tipo",
+    "color": "Cor",
+    "add": "Adicionar",
+    "adding": "Adicionando...",
+    "loading": "Carregando...",
+    "emptyAccounts": "Nenhuma conta cadastrada.",
+    "emptyCategories": "Nenhuma categoria cadastrada."
+  },
+  "table": {
+    "description": "Descrição",
+    "category": "Categoria",
+    "date": "Data",
+    "value": "Valor"
+  },
+  "validation": {
+    "descriptionRequired": "Informe uma descrição.",
+    "amountPositive": "Informe um valor positivo.",
+    "dateRequired": "Informe a data.",
+    "accountRequired": "Selecione uma conta.",
+    "categoryRequired": "Selecione uma categoria.",
+    "nameRequired": "Informe um nome.",
+    "initialBalanceRequired": "Informe um saldo inicial válido."
+  }
+}
