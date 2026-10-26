@@ -9,8 +9,19 @@
 
 <p align="center">
   <a href="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml">
-    <img src="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml/badge.svg" alt="CI status" />
+    <img src="https://github.com/texasnk/pocket-ledger/workflows/CI/badge.svg?branch=main" alt="CI status" />
   </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white" alt="Node.js 22" />
+  <img src="https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white" alt="pnpm 10" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=20232A" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white" alt="Vite 7" />
+  <img src="https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white" alt="Express 5" />
+  <img src="https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Drizzle-ORM-C5F74F?logo=drizzle&logoColor=111111" alt="Drizzle ORM" />
 </p>
 
 <p align="center">
@@ -154,6 +165,10 @@ flowchart LR
 | `apps/api/src/db`             | Cliente SQLite, schema, migrações e seed.                           |
 
 Para detalhes de cada aplicação, consulte [o README do frontend](apps/web/README.md) e [o README da API](apps/api/README.md).
+
+## Licença
+
+Este projeto é distribuído gratuitamente sob a licença [MIT](LICENSE), que permite uso, modificação e redistribuição, desde que os avisos de copyright e de licença sejam mantidos.
 
 ## Convenções de engenharia
 
