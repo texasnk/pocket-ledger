@@ -8,9 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml">
-    <img src="https://github.com/texasnk/pocket-ledger/workflows/CI/badge.svg?branch=main" alt="CI status" />
-  </a>
+  <img src="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml/badge.svg" alt="CI" />
 </p>
 
 <p align="center">
