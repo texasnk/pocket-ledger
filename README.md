@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./apps/web/public/Pocket%20Ledger%20Logo.png" alt="Pocket Ledger" width="300" />
+  <img src="./apps/web/public/Pocket%20Ledger%20Dark%20Mode%20Logo.png" alt="Pocket Ledger" width="300" />
 </p>
 
 <p align="center">
@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rdavi/pocket-ledger/actions/workflows/ci.yml">
-    <img src="https://github.com/rdavi/pocket-ledger/actions/workflows/ci.yml/badge.svg" alt="CI status" />
+  <a href="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml">
+    <img src="https://github.com/texasnk/pocket-ledger/actions/workflows/ci.yml/badge.svg" alt="CI status" />
   </a>
 </p>
 
@@ -34,7 +34,8 @@ O projeto é um monorepo pnpm com frontend React e API Express. Não há autenti
 - Criação de transações em um fluxo guiado por etapas.
 - Lançamentos parcelados e recorrentes.
 - Exclusão com confirmação e histórico de auditoria.
-- Temas claro, escuro e automático.
+- Inicia no modo escuro, com opção para alternar para o tema claro.
+- Navbar com logo adaptado ao tema e fundo interativo com partículas que acompanha o cursor.
 - Interface disponível em português brasileiro e inglês.
 
 ## Guia de uso
@@ -65,7 +66,7 @@ Use o mês selecionado no dashboard e na página de transações para consultar 
 
 ### Pré-requisitos
 
-- Node.js 20 ou superior
+- Node.js 22 ou superior
 - pnpm 10 ou superior
 
 ### Instalação
