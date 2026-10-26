@@ -192,6 +192,22 @@ function Layout({ children }: { children: ReactNode }) {
     document.addEventListener('mousedown', closeNavigationGroup);
     return () => document.removeEventListener('mousedown', closeNavigationGroup);
   }, []);
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let animationFrame = 0;
+    const moveBackgroundHighlight = (event: PointerEvent) => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`);
+        document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`);
+      });
+    };
+    window.addEventListener('pointermove', moveBackgroundHighlight, { passive: true });
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener('pointermove', moveBackgroundHighlight);
+    };
+  }, []);
 
   const goTo = (to: string) => {
     navigate(to);
@@ -205,9 +221,21 @@ function Layout({ children }: { children: ReactNode }) {
         className={`sidebar ${mobileNavOpen ? 'sidebar-open' : ''} ${searchOpen ? 'search-active' : ''}`}
         aria-label="Primary navigation"
       >
-        <div className="sidebar-brand">
-          <img className="brand-logo" src="/Pocket Ledger Logo.png" alt="Pocket Ledger" />
-        </div>
+        <NavLink
+          className="sidebar-brand brand-link"
+          to="/"
+          aria-label={t('navigation.dashboard')}
+          onClick={() => {
+            setMobileNavOpen(false);
+            setOpenNavigationGroup(null);
+          }}
+        >
+          <img
+            className="brand-logo"
+            src={dark ? '/Pocket Ledger Dark Mode Logo.png' : '/Pocket Ledger Logo.png'}
+            alt="Pocket Ledger"
+          />
+        </NavLink>
         <nav className="sidebar-links">
           {navigationGroups.map(({ key, icon: GroupIcon, links }) => {
             const isOpen = openNavigationGroup === key;

@@ -2,14 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { getStoredTheme, resolveTheme } from './theme';
 
 describe('theme preference', () => {
-  it('uses a system preference when storage is missing or invalid', () => {
-    expect(getStoredTheme(null)).toBe('system');
-    expect(getStoredTheme('purple')).toBe('system');
+  it('uses dark mode when storage is missing or invalid', () => {
+    expect(getStoredTheme(null)).toBe('dark');
+    expect(getStoredTheme('purple')).toBe('dark');
+    expect(getStoredTheme('system')).toBe('dark');
   });
 
-  it('resolves system and explicit preferences predictably', () => {
-    expect(resolveTheme('system', true)).toBe('dark');
-    expect(resolveTheme('system', false)).toBe('light');
-    expect(resolveTheme('light', true)).toBe('light');
+  it('resolves explicit preferences predictably', () => {
+    expect(resolveTheme('dark')).toBe('dark');
+    expect(resolveTheme('light')).toBe('light');
   });
 });

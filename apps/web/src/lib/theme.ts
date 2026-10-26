@@ -1,14 +1,14 @@
-export type ThemePreference = 'light' | 'dark' | 'system';
-export type ResolvedTheme = Exclude<ThemePreference, 'system'>;
+export type ThemePreference = 'light' | 'dark';
+export type ResolvedTheme = ThemePreference;
 
 export const themeStorageKey = 'pocket-ledger-theme';
 
 export function getStoredTheme(value: string | null): ThemePreference {
-  return value === 'light' || value === 'dark' || value === 'system' ? value : 'system';
+  return value === 'light' ? 'light' : 'dark';
 }
 
-export function resolveTheme(preference: ThemePreference, prefersDark: boolean): ResolvedTheme {
-  return preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+export function resolveTheme(preference: ThemePreference): ResolvedTheme {
+  return preference;
 }
 
 export function applyTheme(theme: ResolvedTheme) {
