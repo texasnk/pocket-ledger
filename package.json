@@ -1,0 +1,25 @@
+{
+  "name": "pocket-ledger",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.0",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @pocket-ledger/api --filter @pocket-ledger/web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:e2e": "pnpm --filter @pocket-ledger/web test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "typescript-eslint": "^8.44.1"
+  }
+}
