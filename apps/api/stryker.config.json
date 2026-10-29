@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "mutate": [
+    "src/**/*.ts",
+    "!src/generated/**",
+    "!src/server.ts",
+    "!src/db/migrate.ts",
+    "!src/db/seed.ts"
+  ],
+  "testRunner": "command",
+  "commandRunner": {
+    "command": "node ../../node_modules/typescript/bin/tsc -p tsconfig.test.json && node --test dist-test/test/*.test.js"
+  },
+  "coverageAnalysis": "off",
+  "concurrency": 1,
+  "reporters": ["clear-text", "html", "json"],
+  "htmlReporter": {
+    "fileName": "MUTATION_TEST_REPORT.html"
+  },
+  "jsonReporter": {
+    "fileName": "reports/mutation.json"
+  }
+}

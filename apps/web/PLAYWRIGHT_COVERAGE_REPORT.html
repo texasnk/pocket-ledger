@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cobertura Playwright — Pocket Ledger Web</title>
+    <style>
+      body {
+        background: #0f172a;
+        color: #e2e8f0;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+        margin: 0;
+      }
+      main {
+        margin: 4rem auto;
+        max-width: 720px;
+        padding: 0 1.5rem;
+      }
+      article {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+      }
+      strong {
+        color: #fbbf24;
+      }
+      code {
+        color: #5eead4;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Cobertura de código — Playwright</h1>
+      <article>
+        <p>
+          <strong>Não disponível.</strong> A configuração atual do Playwright executa testes E2E
+          headless, mas não instrumenta o bundle do frontend para coletar cobertura de código.
+        </p>
+        <p>
+          O comando <code>pnpm --filter @pocket-ledger/web test:e2e</code> valida o fluxo no
+          navegador. Para obter percentuais de linhas, funções e ramificações no futuro, será
+          necessário adicionar instrumentação ao bundle de teste (por exemplo, Istanbul/Vite) e
+          coleta de <code>window.__coverage__</code>.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

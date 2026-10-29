@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 import { TransactionService } from '../src/application/transaction-service.js';
 import { DomainError } from '../src/domain/financial.js';
 import type { TransactionRecord, TransactionRepository } from '../src/domain/repositories.js';
@@ -42,23 +43,31 @@ describe('TransactionService', () => {
       categoryId: 'c',
       installments: 3
     });
-    expect(records.map((item) => item.amountCents)).toEqual([34, 33, 33]);
-    expect(records.reduce((sum, item) => sum + item.amountCents, 0)).toBe(100);
+    assert.deepEqual(
+      records.map((item) => item.amountCents),
+      [34, 33, 33]
+    );
+    assert.equal(
+      records.reduce((sum, item) => sum + item.amountCents, 0),
+      100
+    );
   });
   it('rejects a transaction that is recurring and installment based', async () => {
     const service = new TransactionService(new MemoryTransactions());
-    await expect(
-      service.create({
-        description: 'x',
-        amountCents: 100,
-        date: '2026-01-10',
-        type: 'EXPENSE',
-        accountId: 'a',
-        categoryId: 'c',
-        installments: 2,
-        recurringMonths: 2
-      })
-    ).rejects.toBeInstanceOf(DomainError);
+    await assert.rejects(
+      () =>
+        service.create({
+          description: 'x',
+          amountCents: 100,
+          date: '2026-01-10',
+          type: 'EXPENSE',
+          accountId: 'a',
+          categoryId: 'c',
+          installments: 2,
+          recurringMonths: 2
+        }),
+      DomainError
+    );
   });
   it('creates transfer counterpart records with equal amounts', async () => {
     const service = new TransactionService(new MemoryTransactions());
@@ -69,19 +78,21 @@ describe('TransactionService', () => {
       fromAccountId: 'a',
       toAccountId: 'b'
     });
-    expect(records).toHaveLength(2);
-    expect(records[0]!.amountCents).toBe(records[1]!.amountCents);
+    assert.equal(records.length, 2);
+    assert.equal(records[0]!.amountCents, records[1]!.amountCents);
   });
   it('rejects transfer to same account', async () => {
     const service = new TransactionService(new MemoryTransactions());
-    await expect(
-      service.transfer({
-        description: 'Erro',
-        amountCents: 1,
-        date: '2026-01-10',
-        fromAccountId: 'a',
-        toAccountId: 'a'
-      })
-    ).rejects.toBeInstanceOf(DomainError);
+    await assert.rejects(
+      () =>
+        service.transfer({
+          description: 'Erro',
+          amountCents: 1,
+          date: '2026-01-10',
+          fromAccountId: 'a',
+          toAccountId: 'a'
+        }),
+      DomainError
+    );
   });
 });

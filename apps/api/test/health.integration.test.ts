@@ -1,11 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 import request from 'supertest';
 import { createApp } from '../src/presentation/app.js';
 describe('HTTP health', () => {
   it('returns API status', async () => {
     const response = await request(createApp()).get('/api/health');
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({ status: 'ok' });
+    assert.equal(response.status, 200);
+    assert.deepEqual(response.body, { status: 'ok' });
   });
 
   it('returns a consistent client error for malformed JSON', async () => {
@@ -14,8 +15,8 @@ describe('HTTP health', () => {
       .set('Content-Type', 'application/json')
       .send('{');
 
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({ message: 'Invalid input data.' });
+    assert.equal(response.status, 400);
+    assert.deepEqual(response.body, { message: 'Invalid input data.' });
   });
 
   it('rejects impossible dates before accessing the database', async () => {
@@ -28,14 +29,14 @@ describe('HTTP health', () => {
       categoryId: 'category'
     });
 
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({ message: 'Invalid input data.' });
+    assert.equal(response.status, 400);
+    assert.deepEqual(response.body, { message: 'Invalid input data.' });
   });
 
   it('returns a predictable response for unknown routes', async () => {
     const response = await request(createApp()).get('/api/missing');
 
-    expect(response.status).toBe(404);
-    expect(response.body).toEqual({ message: 'Route not found.' });
+    assert.equal(response.status, 404);
+    assert.deepEqual(response.body, { message: 'Route not found.' });
   });
 });

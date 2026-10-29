@@ -1,30 +1,35 @@
-import { describe, expect, it } from 'vitest';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 import { isForeignKeyConstraint, isUniqueConstraint } from '../src/shared/sqlite-error.js';
 
 describe('SQLite foreign-key errors', () => {
   it('recognizes the error returned by node:sqlite', () => {
-    expect(
+    assert.equal(
       isForeignKeyConstraint({
         code: 'ERR_SQLITE_ERROR',
         message: 'FOREIGN KEY constraint failed'
-      })
-    ).toBe(true);
+      }),
+      true
+    );
   });
 
   it('does not classify unrelated SQLite errors as relationship conflicts', () => {
-    expect(
-      isForeignKeyConstraint({ code: 'ERR_SQLITE_ERROR', message: 'no such table: Account' })
-    ).toBe(false);
+    assert.equal(
+      isForeignKeyConstraint({ code: 'ERR_SQLITE_ERROR', message: 'no such table: Account' }),
+      false
+    );
   });
 
   it('recognizes uniqueness violations without classifying other SQLite errors', () => {
-    expect(
+    assert.equal(
       isUniqueConstraint({
         code: 'ERR_SQLITE_ERROR',
         message: 'UNIQUE constraint failed: Account.name'
-      })
-    ).toBe(true);
-    expect(isUniqueConstraint({ code: 'ERR_SQLITE_ERROR', message: 'no such table: Account' })).toBe(
+      }),
+      true
+    );
+    assert.equal(
+      isUniqueConstraint({ code: 'ERR_SQLITE_ERROR', message: 'no such table: Account' }),
       false
     );
   });

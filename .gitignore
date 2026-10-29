@@ -2,7 +2,10 @@
 node_modules
 .pnpm-store
 dist
+dist-test
 coverage
+.stryker-tmp
+reports
 apps/api/src/generated
 
 # Test reports and caches
