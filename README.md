@@ -129,28 +129,36 @@ Copie `.env.example` para `apps/api/.env` antes de iniciar a API. As variáveis 
 
 ### Testes, cobertura e mutação
 
+Para comparar somente unidades isoladas da API, use `pnpm --filter @pocket-ledger/api test:unit`. O comando `test:unit:coverage` executa essa seleção com c8 e mostra a cobertura de branches. A suíte geral continua incluindo os testes funcionais e de integração.
+
 Os testes ficam próximos da aplicação que validam. A API usa o runner nativo `node:test`; o frontend usa Vitest para testes unitários e Playwright em modo headless para testes E2E.
 
 ```text
 apps/
 ├── api/
-│   ├── test/                         # Testes unitários e de integração com node:test
+│   ├── tests/
+│   │   ├── application/               # Testes de casos de uso
+│   │   ├── presentation/              # Testes de rotas HTTP
+│   │   └── shared/                    # Testes de utilitários compartilhados
 │   ├── tsconfig.test.json             # Compilação isolada dos testes da API
 │   ├── stryker.config.json            # Configuração dos testes de mutação
 │   ├── scripts/generate-c8-report.mjs # Gera o HTML a partir do resumo do c8
 │   ├── C8_COVERAGE_REPORT.html        # Relatório de cobertura atual
 │   └── MUTATION_TEST_REPORT.html      # Relatório de mutação ou status da execução
 └── web/
-    ├── src/**/*.test.ts[x]            # Testes unitários com Vitest
-    ├── e2e/                           # Testes E2E com Playwright
+    ├── tests/
+    │   ├── features/                  # Testes de features
+    │   ├── lib/                       # Testes de utilitários de interface
+    │   ├── schemas/                   # Testes de schemas de formulário
+    │   └── e2e/                       # Testes E2E com Playwright
     └── PLAYWRIGHT_COVERAGE_REPORT.html # Disponibilidade de cobertura E2E
 ```
 
 - `pnpm test` executa os testes unitários e de integração de todos os workspaces. Na API, os arquivos TypeScript são compilados temporariamente em `dist-test/` antes da execução com `node --test`.
 - `pnpm test:e2e` inicia uma API com SQLite isolado, aplica as migrações, inicia o Vite e executa o Playwright headless. O teste usa `localhost:5173`, origem já permitida pelo CORS da API.
-- `pnpm --filter @pocket-ledger/api test:coverage` executa a suíte da API com c8, produz os dados auxiliares em `coverage/` e atualiza [C8_COVERAGE_REPORT.html](apps/api/C8_COVERAGE_REPORT.html). No estado atual, a cobertura é de 50,94% de linhas e instruções, 48,78% de funções e 68,49% de ramificações.
+- `pnpm --filter @pocket-ledger/api test:coverage` executa a suíte da API com c8, produz os dados auxiliares em `coverage/` e atualiza [C8_COVERAGE_REPORT.html](apps/api/C8_COVERAGE_REPORT.html). Na última execução: 81,26% de linhas e instruções, 85,71% de funções e 90,67% de ramificações.
 - O Playwright valida o comportamento E2E, mas ainda não instrumenta o bundle para medir cobertura de código. [PLAYWRIGHT_COVERAGE_REPORT.html](apps/web/PLAYWRIGHT_COVERAGE_REPORT.html) documenta essa limitação.
-- `pnpm --filter @pocket-ledger/api test:mutation` executa o Stryker. Ele usa a suíte `node:test` dentro de um sandbox e grava o relatório final em [MUTATION_TEST_REPORT.html](apps/api/MUTATION_TEST_REPORT.html). A configuração atual analisa 11 arquivos e 689 mutantes, com um runner por vez; por isso a execução completa pode levar vários minutos.
+- `pnpm --filter @pocket-ledger/api test:mutation` executa o Stryker com a suíte unitária e muta domínio, serviço de transações, schemas e datas. Na última execução: 212 de 255 mutantes mortos (83,14%), 43 sobreviventes e nenhum timeout ou erro. O relatório está em [MUTATION_TEST_REPORT.html](apps/api/MUTATION_TEST_REPORT.html). A configuração usa 20 workers e `timeoutMS: 30000`.
 
 Os diretórios transitórios `coverage/`, `dist-test/`, `.stryker-tmp/`, `reports/`, `playwright-report/` e `test-results/` são ignorados pelo Git. Os três HTMLs de relatório acima são mantidos fora do `.gitignore` para poderem ser versionados.
 
