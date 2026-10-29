@@ -4,7 +4,7 @@ import {
   chartCategoricalDark,
   chartCategoricalLight,
   chartColor
-} from './chart-colors';
+} from '../../src/lib/chart-colors';
 
 describe('chart colour tokens', () => {
   it('keeps financial meanings bound to semantic tokens', () => {

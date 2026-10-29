@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getStoredTheme, resolveTheme } from './theme';
+import { getStoredTheme, resolveTheme } from '../../src/lib/theme';
 
 describe('theme preference', () => {
   it('uses dark mode when storage is missing or invalid', () => {

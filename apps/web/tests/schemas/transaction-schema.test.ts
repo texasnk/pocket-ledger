@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { transactionFormSchema } from './transaction-schema';
+import { transactionFormSchema } from '../../src/schemas/transaction-schema';
 
 describe('transaction form schema', () => {
   it('accepts a fixed expense with a defined duration', () => {
